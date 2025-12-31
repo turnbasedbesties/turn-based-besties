@@ -15,6 +15,7 @@ function App() {
   const LINKTREE_URL = 'https://linktr.ee/turnbasedbesties'
   const CANVA_URL = 'https://turnbasedbesties.my.canva.site/'
   const RSS_URL = 'https://anchor.fm/s/efeb6ca8/podcast/rss'
+  const TWITTER_HANDLE = 'turnbasedbesties' // Update this to your actual Twitter handle
 
   useEffect(() => {
     const fetchFeed = async () => {
@@ -221,6 +222,41 @@ function App() {
     </div>
   )
 
+  const renderSocial = () => (
+    <div className="tab-content fade-in">
+      <section className="section">
+        <h2>The Tavern</h2>
+        <p>Stay up to date with our latest scrolls and captures.</p>
+        <div className="social-grid">
+          <div className="social-column">
+            <h3>Latest Scrolls (Twitter)</h3>
+            <div className="social-card">
+              <a 
+                className="twitter-timeline" 
+                data-height="600" 
+                data-theme="dark" 
+                href={`https://twitter.com/${TWITTER_HANDLE}?ref_src=twsrc%5Etfw`}
+              >
+                Loading Tweets...
+              </a>
+            </div>
+          </div>
+          <div className="social-column">
+            <h3>Gallery (Instagram)</h3>
+            <div className="social-card instagram-placeholder">
+              <div className="card-icon">📸</div>
+              <h4>Check out our captures</h4>
+              <p>Follow us on Instagram for behind-the-scenes and RPG highlights!</p>
+              <a href="https://instagram.com/turnbasedbesties" target="_blank" rel="noopener noreferrer" className="button">
+                Visit Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+
   return (
     <div className="container">
       <nav className="navbar">
@@ -229,6 +265,7 @@ function App() {
           <button onClick={() => setActiveTab('home')} className={activeTab === 'home' ? 'active' : ''}>Quest Board</button>
           <button onClick={() => setActiveTab('creators')} className={activeTab === 'creators' ? 'active' : ''}>Party Info</button>
           <button onClick={() => setActiveTab('about')} className={activeTab === 'about' ? 'active' : ''}>The Lore</button>
+          <button onClick={() => setActiveTab('social')} className={activeTab === 'social' ? 'active' : ''}>The Tavern</button>
         </div>
       </nav>
 
@@ -252,9 +289,11 @@ function App() {
       {activeTab === 'home' && renderHome()}
       {activeTab === 'creators' && renderCreators()}
       {activeTab === 'about' && renderAbout()}
+      {activeTab === 'social' && renderSocial()}
 
       <footer className="footer">
         <div className="social-links-footer">
+          <a href={`https://twitter.com/${TWITTER_HANDLE}`} target="_blank" rel="noopener noreferrer">Twitter</a>
           <a href="https://instagram.com/turnbasedbesties" target="_blank">Instagram</a>
           <a href={CHANNEL_URL} target="_blank">YouTube</a>
           <a href={REDDIT_URL} target="_blank">Reddit</a>
