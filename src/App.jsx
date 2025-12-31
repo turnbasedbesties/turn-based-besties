@@ -221,27 +221,6 @@ function App() {
     </div>
   )
 
-  const renderSocial = () => (
-    <div className="tab-content fade-in">
-      <section className="section">
-        <h2>The Tavern</h2>
-        <p>A glimpse into our adventures. (Upload images to public/images to populate this gallery!)</p>
-        <div className="gallery-grid">
-           {[artwork, artwork, artwork, artwork].map((img, index) => (
-             <div key={index} className="gallery-item">
-               <img src={img} alt={`Gallery ${index + 1}`} />
-             </div>
-           ))}
-        </div>
-        <div style={{textAlign: 'center', marginTop: '2rem'}}>
-            <a href="https://instagram.com/turnbasedbesties" target="_blank" rel="noopener noreferrer" className="button">
-                See More on Instagram
-            </a>
-        </div>
-      </section>
-    </div>
-  )
-
   return (
     <div className="container">
       <nav className="navbar">
@@ -250,7 +229,6 @@ function App() {
           <button onClick={() => setActiveTab('home')} className={activeTab === 'home' ? 'active' : ''}>Quest Board</button>
           <button onClick={() => setActiveTab('creators')} className={activeTab === 'creators' ? 'active' : ''}>Party Info</button>
           <button onClick={() => setActiveTab('about')} className={activeTab === 'about' ? 'active' : ''}>The Lore</button>
-          <button onClick={() => setActiveTab('social')} className={activeTab === 'social' ? 'active' : ''}>The Tavern</button>
         </div>
       </nav>
 
@@ -274,7 +252,6 @@ function App() {
       {activeTab === 'home' && renderHome()}
       {activeTab === 'creators' && renderCreators()}
       {activeTab === 'about' && renderAbout()}
-      {activeTab === 'social' && renderSocial()}
 
       <footer className="footer">
         <div className="social-links-footer">
